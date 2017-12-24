@@ -1,0 +1,12 @@
+<h2>Clients</h2>
+
+<p-dataTable [value]="clients" [loading]="loading" [selectionMode]="single" [(selection)]="selectedClient" (onRowSelect)="onRowSelect($event.data)">
+  <p-column [filter]="true" field="email" header="Email"></p-column>
+  <p-column [filter]="true" field="clientType" header="Type"></p-column>
+  <p-column [filter]="true" field="notificationsEnabled" header="Notifications Enabled"></p-column>
+  <p-column styleClass="col-button">
+    <ng-template let-client="rowData" pTemplate="body">
+      <button type="button" pButton (click)="openClient(client)" icon="fa-pencil"></button>
+    </ng-template>
+  </p-column>
+</p-dataTable>
