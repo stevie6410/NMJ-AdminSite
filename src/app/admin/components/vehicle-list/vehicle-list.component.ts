@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { VehicleService } from '../../../shared/services/vehicle.service';
 import { Vehicle } from '../../../shared/models/app.models';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-vehicle-list',
@@ -15,7 +16,8 @@ export class VehicleListComponent implements OnInit {
   newPriceReg: string;
 
   constructor(
-    private vehicleService: VehicleService
+    private vehicleService: VehicleService,
+    private router: Router
   ) { }
 
   async ngOnInit() {
@@ -32,6 +34,10 @@ export class VehicleListComponent implements OnInit {
     await this.vehicleService.updatePrice(vehicleReg, newPrice).toPromise();
     console.log("Price updated");
     await this.refreshData();
+  }
+
+  openVehicle(vehicle: Vehicle) {
+    this.router.navigate(['/vehicles', vehicle.registration]);
   }
 
 }

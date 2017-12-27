@@ -1,0 +1,54 @@
+<h2>Vehicle Detail</h2>
+
+<div *ngIf="loading">
+  <h1>Loading...</h1>
+</div>
+
+<div *ngIf="vehicle">
+
+  <div class="ui-g ui-fluid form-group" *ngIf="vehicle">
+
+    <div class="ui-g-12 ui-md-12">
+      <div class="ui-inputgroup">
+        <button button="" disabled="true" type="button" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only">
+          <span class="ui-button-text">StockItem</span>
+        </button>
+        <input pinputtext type="text" readonly [(ngModel)]="vehicle.stockItem " class="ui-inputtext ui-corner-all ui-state-default ui-widget ">
+      </div>
+    </div>
+    <div class="ui-g-12 ui-md-12">
+      <div class="ui-inputgroup">
+        <button pbutton disabled="true" type="button" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only">
+          <span class="ui-button-text">Registration</span>
+        </button>
+        <input pinputtext type="text " readonly [(ngModel)]="vehicle.registration " class="ui-inputtext ui-corner-all ui-state-default ui-widget ">
+      </div>
+    </div>
+    <div class="ui-g-12 ui-md-12">
+      <div class="ui-inputgroup">
+        <button pbutton="" disabled="true" type="button" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only">
+          <span class="ui-button-text">Category</span>
+        </button>
+        <input pinputtext=" " placeholder="Client Type " type="text " readonly [(ngModel)]="vehicle.category " class="ui-inputtext ui-corner-all ui-state-default ui-widget ">
+      </div>
+    </div>
+  </div>
+
+
+  <h2>
+    Watching Clients
+    <span class="badge">{{watchingClients?.length ? watchingClients?.length : 0}}</span>
+  </h2>
+
+  <p-dataTable [value]="watchingClients" [loading]="loading" [selectionMode]="single" [(selection)]="selectedClient" (onRowSelect)="onRowSelect($event.data)">
+    <p-column [filter]="true" field="email" header="Email"></p-column>
+    <p-column [filter]="true" field="clientType" header="Type"></p-column>
+    <p-column [filter]="true" field="notificationsEnabled" header="Notifications Enabled"></p-column>
+    <p-column styleClass="col-button">
+      <ng-template let-client="rowData" pTemplate="body">
+        <button type="button" pButton [routerLink]="['/clients', client.clientRef]" icon="fa-pencil"></button>
+      </ng-template>
+    </p-column>
+  </p-dataTable>
+
+</div>

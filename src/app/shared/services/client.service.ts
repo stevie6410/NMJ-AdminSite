@@ -52,6 +52,12 @@ export class ClientService {
       .pipe(catchError(handleError('Get Clients', null)));
   }
 
+  public getClientsWatchingVehicle(registration: string): Observable<Client[]> {
+    return this.http
+      .get<Client[]>(`${this.baseUrl}/watching/${registration}`)
+      .pipe(catchError(handleError('Get Clients Watching Vehicle', null)));
+  }
+
   async isWatching(registration: string): Promise<boolean> {
     if (this.isLoggedIn) {
       var clientRef = localStorage.getItem(this.cookieKey);

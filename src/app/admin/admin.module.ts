@@ -6,6 +6,8 @@ import { VehicleListComponent } from './components/vehicle-list/vehicle-list.com
 import { ClientListComponent } from './components/client-list/client-list.component';
 import { DataTableModule, ButtonModule, CheckboxModule, TabViewModule } from 'primeng/primeng';
 import { ClientDetailComponent } from './components/client-detail/client-detail.component';
+import { VehicleDetailComponent } from './components/vehicle-detail/vehicle-detail.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 @NgModule({
   imports: [
@@ -23,7 +25,9 @@ import { ClientDetailComponent } from './components/client-detail/client-detail.
   declarations: [
     VehicleListComponent,
     ClientListComponent,
-    ClientDetailComponent
+    ClientDetailComponent,
+    VehicleDetailComponent,
+    DashboardComponent
   ]
 })
 export class AdminModule { }

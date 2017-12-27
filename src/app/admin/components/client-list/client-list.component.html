@@ -1,12 +1,19 @@
-<h2>Clients</h2>
+<h2>
+  Clients
+  <span class="badge">{{clients?.length}}
+    <i class="fa fa-spinner fa-spin" *ngIf="loading"></i>
+  </span>
+</h2>
+
 
 <p-dataTable [value]="clients" [loading]="loading" [selectionMode]="single" [(selection)]="selectedClient" (onRowSelect)="onRowSelect($event.data)">
-  <p-column [filter]="true" field="email" header="Email"></p-column>
-  <p-column [filter]="true" field="clientType" header="Type"></p-column>
-  <p-column [filter]="true" field="notificationsEnabled" header="Notifications Enabled"></p-column>
+  <p-header>Clients</p-header>
+  <p-column field="email" header="Email"></p-column>
+  <p-column field="clientType" header="Type"></p-column>
+  <p-column field="notificationsEnabled" header="Notifications Enabled"></p-column>
   <p-column styleClass="col-button">
     <ng-template let-client="rowData" pTemplate="body">
-      <button type="button" pButton (click)="openClient(client)" icon="fa-pencil"></button>
+      <button type="button" pButton [routerLink]="['/clients', client.clientRef]" icon="fa-pencil"></button>
     </ng-template>
   </p-column>
 </p-dataTable>

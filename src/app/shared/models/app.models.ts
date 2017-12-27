@@ -24,9 +24,26 @@ export class Client {
     notificationsEnabled: boolean;
     createdOn: string;
     linkedVehicles: LinkedVehicle[];
+    notifications: Notification[];
 }
 
 export class LinkedVehicle {
     vehicleRegistration: string;
     watching: boolean;
+}
+
+export class Notification {
+    _id: string;
+    autoSend: boolean;
+    body: string;
+    clientRef: string;
+    email: string;
+    notifcationId: string;
+    priceChange: PriceChange;
+    scheduledFor: Date;
+    sent: boolean;
+    sentOn: Date;
+    subject: string;
+    type: string;
+    vehicleRegistration: string;
 }
